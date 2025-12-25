@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry 💔</title>
+
+    <!-- INTERNAL CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Slideshow background */
+        .slideshow {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Overlay content */
+        .overlay {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px 28px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 30px;
+            background-color: #ff6b81;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ff4757;
+        }
+
+        #msg {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            color: #ffdcdc;
+        }
+
+        /* Mobile friendly */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slideshow -->
+    <div class="slideshow">
+        <!-- Replace these images with her photos -->
+        <img src="https://i.postimg.cc/mD9dY7Mr/img5.jpg" class="slide active">
+        <img src="https://i.postimg.cc/26WHQnvN/img4.jpg" class="slide">
+        <img src="https://i.postimg.cc/j5f8HyNb/img3.jpg" class="slide">
+        <img src="https://i.postimg.cc/26WHQnvR/img2.jpg" class="slide">
+        <img src="https://i.postimg.cc/cH3DRfYN/img1.jpg" class="slide">
+    </div>
+
+    <!-- Overlay Content -->
+    <div class="overlay">
+        <h1>I'm Really Sorry 💔</h1>
+        <p>
+            I know I made a mistake and hurt you.<br>
+            You are very special to me, more than you know.<br><br>
+            Please forgive me, my best friend 🥺❤️
+        </p>
+        <button onclick="forgive()">Forgive Me?</button>
+        <div id="msg"></div>
+    </div>
+
+    <!-- INTERNAL JAVASCRIPT -->
+    <script>
+        let slides = document.querySelectorAll(".slide");
+        let current = 0;
+
+        setInterval(() => {
+            slides[current].classList.remove("active");
+            current = (current + 1) % slides.length;
+            slides[current].classList.add("active");
+        }, 3500);
+
+        function forgive() {
+            document.getElementById("msg").innerText =
+                "Thank you for giving me a chance ❤️ I promise to never hurt you again.";
+        }
+    </script>
+
+</body>
+</html>
